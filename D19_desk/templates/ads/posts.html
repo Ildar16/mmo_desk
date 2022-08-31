@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Posts
+{% endblock %}
+
+{% block content %}
+<table align="center">
+    <tr>
+        <td>
+            Title
+        </td>
+        <td>
+            Content
+        </td>
+        <td>
+            Edit
+        </td>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td>
+            <a href="{% url 'post_detail' post.id %}">{{ post.post_title }}</a>
+        </td>
+        <td>
+            {{ post.post_content|safe }}
+        </td>
+        <td>
+            <a href="{% url 'post_update' post.id %}"><u>Редактировать</u></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
